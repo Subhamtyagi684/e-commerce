@@ -1,6 +1,6 @@
 E-commerce Store
 
-It is a small store, where you can view products, buy and do other things. You can only access this app if you are a registered user with us else you have to register with us and then after login you can access all the resources. I have used custom registration model for this app. The authentication system used in this app is Session Authentication. You can also recover your password, but due to some privacy , I couldn't use smtp.gmail.com as a email_backend so i used django.core backend. Due to time issue, couldn't add cart system. I have build some api's . Some of the useful links are:
+It is a small store, where you can view products, buy and do other things. You can only access this app if you are a registered user with us else you have to register with us and then after login you can access all the resources. I have used custom registration model for this app. The authentication system used in this app is Session Authentication. You can also recover your password, but due to some privacy , I couldn't use smtp.gmail.com as a email_backend so i used django.core backend. Due to time issue, couldn't add cart system. If you look me further, I can build cart system too. I have build some api's . Some of the useful links are:
 
 #Home page: http://localhost:8000   (Only if you are logged in, else you will be redirected to login page and if you are not a registered user, you can register by clicking on the link 'Create new account'.
 
