@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+
+{% endblock title %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock css %}
+
+{% block body %}
+<center><h3 class='p-3 text-success'> Signup Form </h3></center>
+<hr class='bg-success'/>
+<section>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                
+                <table class='w-100' cellpadding='15'>
+                    <tbody>
+                    <form method='POST' novalidate>
+                        {% csrf_token %}
+                        {% for i in form %}
+                            <tr>
+                                <th>
+                                    {{i.label_tag}}
+                                </th>
+                                <td>
+                                    <ul class='form_list'>
+                                        <li > {{i}} </li>
+                                        {% if i.errors %}
+                                        <li>{{i.errors}}</li>
+                                        {% endif %}
+                                        {% if i.help_text %}
+                                        <li>{{i.help_text}}</li>
+                                        {% endif %}
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <th colspan='2' class='text-center'>
+                                <button type='submit' class='btn btn-primary'>Submit</button>
+                            </th>
+                        </tr>
+                    </form>
+                    </tbody>
+                </table>
+            
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}
