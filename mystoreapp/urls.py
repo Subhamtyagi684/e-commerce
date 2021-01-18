@@ -18,5 +18,6 @@ urlpatterns = [
     path('product_detail/<str:prod_id>/', views.Productdetail.as_view() , name='product_detail'),
     path('product_add/', views.Productadd.as_view() , name='product_add'),
     path('product_delete/<str:prod_id>/',views.Productdelete.as_view(), name='product_delete'),
-    path('product_update/<str:prod_id>/', views.Productupdate.as_view(), name='product_update')
+    path('product_update/<str:prod_id>/', views.Productupdate.as_view(), name='product_update'),
+    path('product_update_image/<str:prod_id>/', views.Productupdateimage.as_view(), name='product_image')
 ]

@@ -3,7 +3,7 @@ from .models import Product
 from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView,ListAPIView , UpdateAPIView
 from rest_framework.response import Response
-from .serializers import ProductSerializer
+from .serializers import ProductSerializer , ProductImageSerializer
 from rest_framework import status
 from rest_framework.parsers import JSONParser
 from datetime import date, datetime
@@ -21,10 +21,10 @@ from rest_framework.parsers import MultiPartParser, FormParser , FileUploadParse
 
 def home(request):
     if request.user.is_authenticated :
-        response = requests.get('http://localhost:8000/products/')
-        data = response.json()
-        # obj = Product.objects.all()
-        return render(request,'home.html',{'data':data})
+        # response = requests.get('http://localhost:8000/products/')
+        # data = response.json()
+        obj = Product.objects.all()
+        return render(request,'home.html',{'data':obj})
     return redirect('login')
 
 
@@ -162,3 +162,21 @@ class Productupdate(APIView):
             serializer.save()
             return Response({'message':'Product updated successfully'},status=status.HTTP_200_OK)
 
+
+class Productupdateimage(APIView):
+    serializer_class = ProductImageSerializer
+    parser_classes = (FileUploadParser,JSONParser, MultiPartParser)
+
+    def post(self, request, prod_id):
+        try:
+            obj = Product.objects.get(id=prod_id)
+        except:
+            return Response({"message":'Product with this id not found'},status=status.HTTP_400_BAD_REQUEST)
+        
+        file_obj = request.data.get('file') or request.FILES.get('file')
+        serialzer= ProductImageSerializer(data = request.data)
+        if serialzer.is_valid(raise_exception=True):
+            serialzer.save()
+            return Response({'message':obj.prod_name},status=status.HTTP_200_OK)
+        return Response(serialzer.errors,status=status.HTTP_200_OK)
+        
