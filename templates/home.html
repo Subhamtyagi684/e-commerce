@@ -17,11 +17,11 @@
             {% for i in data %}
                 <div class='col-md-4'>
                     <div class="card">
-                    {% comment %} <img src="{% if i.prod_image %} {{i.prod_image}} {% else %} {% static 'images/noimage.jpg'%}{% endif %} " class="card-img-top" height='400' width='100%' alt="..."> {% endcomment %}
+                    <img src="{% if i.prod_image %} {{MEDIA_URL}}{{i.prod_image}} {% else %} {% static 'images/noimage.jpg'%}{% endif %} " class="card-img-top" height='400' width='100%' alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><b>Name: </b>{{i.prod_name |truncatechars:50}}</h5>
                             <p class="card-text"><b>Description: </b>{{i.prod_desc |truncatewords:10}}</p>
-                            <p class="card-text"><b>Price: </b>Rs.{{i.prod_price}} </p>
+                            <p class="card-text"><b>Price: </b>${{i.prod_price}} </p>
                             <a href="#" class="btn btn-primary">Add to cart </a>
                         </div>
                     </div>

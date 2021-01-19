@@ -114,19 +114,12 @@ class Product(models.Model):
         ('baby','Baby Products')
     ]
     prod_type = models.CharField(max_length=250,choices=type_choices,help_text="choose one from [clothing, bags, footwear, electronics, beauty_grocery, sports, books, baby]")
+    prod_image = models.ImageField(upload_to='product_images/',blank=False, null=False)
     active = models.BooleanField(default=True)
     prod_desc = models.TextField(max_length=1500)
     prod_price = models.FloatField()
     updated_on = models.DateTimeField(default=datetime.now())
     created_on = models.DateTimeField(auto_now_add=True,editable=False)
-
-
-class ProductImage(models.Model):
-    name = models.CharField(max_length=350)
-    image = models.ImageField(upload_to='product_images/',null=False, blank=False)
-
-    def __str__(self):
-        return self.name
 
 
 

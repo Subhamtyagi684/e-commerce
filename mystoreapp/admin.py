@@ -9,7 +9,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 
-from .models import MyUser, Product, ProductImage
+from .models import MyUser , Product
 
 
 class UserCreationForm(forms.ModelForm):
@@ -93,4 +93,4 @@ admin.site.unregister(Group)
 
 admin.site.register(Product)
 
-admin.site.register(ProductImage)
+# admin.site.register(ProductImage)
